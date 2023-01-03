@@ -1,16 +1,23 @@
-import Header from '../Components/Header'
+import {HeaderGlobal, HeaderLogin} from '../Components/Header'
 
 
 
 
-const TemplateDefault = ({children}) =>{
+ export function TemplateDefault({children}){
     return(
          <>
-         <Header />
+         <HeaderGlobal />
+         {children}
+         </>   
+    )
+}
+ export function TemplateLogin ({children}){
+    return(
+         <>
+         <HeaderLogin />
          {children}
          </>   
     )
 }
 
 
-export default TemplateDefault

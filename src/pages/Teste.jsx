@@ -10,8 +10,8 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
-import '../../styles/global.css'
-import { TemplateDefault } from '../../Templates/TemplateDefault'
+import '../styles/global.css'
+import { TemplateDefault } from '../Templates/TemplateDefault'
 
 const RandomUsers = () => {
     const [users, setUsers] = useState([])
@@ -58,12 +58,13 @@ const RandomUsers = () => {
                 onChange={changeRandler}>
             </TextField>
 
-            <Grid container spacing={2}
+            <Grid container
+                spacing={{ xs: 5, md: 4 }}
+                columns={{ xs: 2, sm: 4, md: 6 }}
+                display='flex'
                 justifyContent="center"
-                alignItems='center'
-                marginTop={25}
+                alignItems='center'>
 
-                >
 
                 {
                     filterUsers().map((user) => (
@@ -71,17 +72,11 @@ const RandomUsers = () => {
                         <Card key={user.cell} sx={{
                             color: '#dbcccc',
                             bgcolor: 'rgb(110 70 103)',
-                            border: '1px solid white',
-                            padding: 3,
+                            padding: 5,
                             textAlign: 'center',
-                            margin: '0 10px 10px 0',
-                            width: '300px',
-                            height: '424px'
-                            
-                        }}
+                            margin: '180px 10px 10px 10px'
 
-                            
-                        >
+                        }}>
                             <img alt='' width='250px' className='rounded-circle' src={user.picture.large}></img>
                             <CardContent>
                                 <Typography textAlign='center' variant="body2" color="text.secondary">
