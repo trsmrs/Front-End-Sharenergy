@@ -1,22 +1,20 @@
 import { useState, useEffect } from "react"
-import axios from 'axios'
-
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-
-import { teal } from "@mui/material/colors";
+import { useParams } from "react-router-dom"
+import axios from "axios"
 import {
     Button,
+    TextField,
     Snackbar,
     Stack,
-} from "@mui/material";
-import MuiAlert from '@mui/material/Alert';
-import { useParams } from "react-router-dom";
+    Box,
+} from "@mui/material"
+import MuiAlert from '@mui/material/Alert'
 
-
+import '../../styles/global.css'
+import { TemplateDefault } from "../../Templates/TemplateDefault"
 
 const CustomersEdit = () => {
-    const { _id } = useParams()
+    const { id } = useParams()
 
     const [form, setForm] = useState({
         name: {
@@ -39,49 +37,51 @@ const CustomersEdit = () => {
             value: "",
             error: false,
         }
+
     })
 
     useEffect(() => {
-         axios.get(`http://127.0.0.1:8080/api/customers/${_id}`)
-         .then(response => {
-            const data = response.data
-            console.log(data)
-            setForm({
-                name: {
-                    value: data.name,
-                    error: false,
-                },
-                email: {
-                    value: data.email,
-                    error: false,
-                },
-                phone: {
-                    value: data.phone,
-                    error: false,
-                },
-                address: {
-                    value: data.address,
-                    error: false,
-                },
-                cpf: {
-                    value: data.cpf,
-                    error: false,
-                },
-            })
+        axios.get(`http://127.0.0.1:8080/api/customers/${id}`)
+            .then(response => {
+                const data = response.data
 
-        })
-        .catch((error) => {
-            if (error.response) {
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            } else if (error.request) {
-                console.log(error.request);
-            } else {
-                console.log('Error', error.message);
-            }
-        })
-    }, [_id])
+                setForm({
+                    name: {
+                        value: data.name,
+                        error: false,
+                    },
+                    email: {
+                        value: data.email,
+                        error: false,
+                    },
+                    phone: {
+                        value: data.phone,
+                        error: false,
+                    },
+                    address: {
+                        value: data.address,
+                        error: false,
+                    },
+                    cpf: {
+                        value: data.cpf,
+                        error: false,
+                    }
+
+                })
+
+            })
+            .catch((error) => {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    console.log(error.request);
+                } else {
+                    console.log('Error', error.message);
+                }
+            })
+    }, [id])
 
     const [open, setOpen] = useState(false);
     const handleClick = () => {
@@ -100,7 +100,6 @@ const CustomersEdit = () => {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
-
         setForm({
             ...form,
             [name]: {
@@ -109,9 +108,10 @@ const CustomersEdit = () => {
             },
 
         })
+        console.log(form, value)
     }
 
-    const handleAddButton = async () => {
+    const handleSubmit = () => {
         let hasError = false
         let newFormState = {
             ...form
@@ -160,18 +160,31 @@ const CustomersEdit = () => {
             return setForm(newFormState)
         }
 
-        await axios.patch(`http://127.0.0.1:8080/api/customers/${_id}`, {
-            _id: _id,
+        axios.patch(`http://127.0.0.1:8080/api/customers/${id}`, {
+
             name: form.name.value,
             email: form.email.value,
             phone: form.phone.value,
             address: form.address.value,
-            cpf: form.cpf.value,
-        }).then((response) => {
-            const result = response.data
-            console.log(result)
+            cpf: form.cpf.value
+
+        }).then(() => {
             handleClick()
-        }).catch(({ response }) => console.log(response))
+            clearFields()
+            setOpen(true)
+        })
+        // .catch((error) => {
+        //     if (error.response) {
+        //         console.log(error.response.data);
+        //         console.log(form)
+        //         console.log(error.response.status);
+        //         console.log(error.response.headers);
+        //     } else if (error.request) {
+        //         console.log(error.request);
+        //     } else {
+        //         console.log('Error', error.message);
+        //     }
+        // })
 
     }
 
@@ -184,91 +197,112 @@ const CustomersEdit = () => {
     }
 
     return (
+
         <>
-            <Box
-                component="form"
-                sx={{
-                    '& > :not(style)': { m: 2, width: '400px', marginLeft: "15%" },
-                }}
-                noValidate
-                autoComplete="off"
-            >
-                <div>
-                    <TextField
-                        error={form.name.error}
-                        label="Nome"
-                        name="name"
-                        variant="standard"
-                        value={form.name.value}
-                        helperText={form.name.error ? form.name.helperText : ''}
-                        onChange={handleInputChange} />
-                </div>
-                <div>
-                    <TextField
-                        error={form.email.error}
-                        label="E-mail"
-                        name="email"
-                        variant="standard"
-                        value={form.email.value}
-                        helperText={form.email.error ? form.email.helperText : ''}
-                        onChange={handleInputChange} />
-                </div>
-                <div>
-                    <TextField
-                        error={form.phone.error}
-                        label="Telefone"
-                        name="phone"
-                        variant="standard"
-                        value={form.phone.value}
-                        helperText={form.phone.error ? form.phone.helperText : ''}
-                        onChange={handleInputChange} />
-                </div>
-                <div>
-                    <TextField
-                        error={form.address.error}
-                        label="Endereço"
-                        name="address"
-                        variant="standard"
-                        value={form.address.value}
-                        helperText={form.address.error ? form.address.helperText : ''}
-                        onChange={handleInputChange} />
-                </div>
-                <div>
-                    <TextField
-                        error={form.cpf.error}
-                        label="Cpf"
-                        name="cpf"
-                        variant="standard"
-                        value={form.cpf.value}
-                        helperText={form.cpf.error ? form.cpf.helperText : ''}
-                        onChange={handleInputChange} />
-                </div>
-                <div>
-                    <Box>
-                        <Button sx={{ margin: 2, padding: ["5px 10px 0px 10px"] }}
-                            variant="contained"
-                            color='primary'
-                            onClick={() => handleAddButton()}>
-                            Salvar
-
-                        </Button>
-                    </Box>
-                </div>
-            </Box>
+            <TemplateDefault>
+                <Box
+                    component="form"
+                    onSubmit={handleSubmit}
+                    sx={{
+                        '& .MuiTextField-root': { m: 5, width: '45ch' },
+                        display: 'flex'
+                    }}
+                    noValidate
+                    autoComplete="off"
+                >
 
 
-            <Stack spacing={2} sx={{ width: '100%' }}>
-                <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-                    <MuiAlert onClose={handleClose} severity="success" sx={{
-                        width: '100%',
-                        color: teal['900'],
-                        backgroundColor: teal['A400']
+                    <Box className='efeito-vidro' sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        marginTop: '60px',
+                        flexDirection: 'column',
+                        marginLeft: '37%',
+                        borderRadius: 10
+
                     }}>
-                        Cadastro Alterado com Sucesso!
-                    </MuiAlert>
-                </Snackbar>
-            </Stack>
+                        {/* <Typography variant="h5" component="h5" sx={{ color: '#fff'}}>Cadastro de Clientes</Typography> */}
 
+                        <TextField sx={{ m: 21, width: '25ch' }}
+                            value={form.name.value}
+                            label="Nome"
+                            type="text"
+                            name="name"
+                            onChange={handleInputChange}
+                            variant={"outlined"}
+                            color='secondary'
+                        />
+
+                        <TextField sx={{ m: 21, width: '25ch' }}
+                            value={form.cpf.value}
+                            label="CPF"
+                            type="text"
+                            name="cpf"
+                            onChange={handleInputChange}
+                            variant={"outlined"}
+                            color='secondary'
+                        />
+
+                        <TextField sx={{ m: 21, width: '25ch' }}
+                            value={form.email.value}
+                            label="E-mail"
+                            type="text"
+                            name="email"
+                            onChange={handleInputChange}
+                            variant={"outlined"}
+                            color='secondary'
+                        />
+
+
+                        <TextField sx={{ m: 21, width: '25ch' }}
+                            value={form.phone.value}
+                            label="Telefone"
+                            type="text"
+                            name="phone"
+                            onChange={handleInputChange}
+                            variant={"outlined"}
+                            color='secondary'
+                        />
+
+                        <TextField sx={{ m: 21, width: '25ch' }}
+                            value={form.address.value}
+                            label="Endereço"
+                            type="text"
+                            name="address"
+                            onChange={handleInputChange}
+                            variant={"outlined"}
+                            color='secondary'
+                        />
+
+                        <Button sx={{
+                            bgcolor: '#ad98a9', color: '#000', width: 350, marginLeft: 6,
+                            marginBottom: 4,
+                            "&:hover": { bgcolor: '#7a4f6a', color: '#fff' }
+                        }}
+                            type="submit"
+                        >Alterar</Button>
+
+
+                    </Box>
+
+
+                </Box>
+
+                <Stack spacing={2} sx={{ width: '100%' }}>
+                    <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+                        <MuiAlert onClose={handleClose} severity="success" sx={{
+                            width: '100%',
+                            color: 'white',
+                            bgcolor: 'rgb(46 10 40)'
+                        }}>
+                            Cadastro Alterado com Sucesso!
+                        </MuiAlert>
+                    </Snackbar>
+                </Stack>
+
+
+
+            </TemplateDefault>
         </>
     )
 }

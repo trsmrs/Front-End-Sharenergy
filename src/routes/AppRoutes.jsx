@@ -29,7 +29,7 @@ const AppRoutes = () =>{
                  <Route path="/signup" element={<SingupPage />} />
 
                  <Route path="/customers" element={<Customers />} />
-                 <Route path="/customers/edit/:_id" element={<CustomersEdit />}/>   
+                 <Route path="/customers/edit/:id" element={<CustomersEdit />}/>   
 
                  {user &&<Route path="/random" element={<RandomUsers />} />}
                 <Route path="/random" element={<Navigate replace to='/'/>}/>

@@ -10,7 +10,7 @@ body{
 }
 
 .efeito-vidro {
-    background: rgba(148, 13, 69, 0.15);
+    background: rgb(167 122 141 / 96%);
     box-shadow: 4px 2px 20px 11px rgb(84 48 66);
     backdrop-filter: blur(7px);
     -webkit-backdrop-filter: blur(7px);

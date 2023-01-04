@@ -1,16 +1,13 @@
 import React, { useState } from 'react'
 import {
-
-  Snackbar,
   Chip,
-  Stack,
   Card,
   CardContent,
   CardActions,
   Typography,
   Grid,
 } from '@mui/material'
-import MuiAlert from '@mui/material/Alert';
+
 
 import ModalConfirm from '../modals/ModalConfirm'
 
@@ -53,16 +50,6 @@ const CustomerCard = ({
   const handleClick = () => {
     setOpen(true);
   };
-
-
-  const handleClose = (event, reason) => {
-    if (reason === 'click') {
-      return;
-    }
-
-    setOpen(false);
-  };
-
 
   return (
 

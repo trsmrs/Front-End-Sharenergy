@@ -46,10 +46,6 @@ const Signup = () => {
 		}
 	};
 
-	const clearInputs = () =>{
-		
-	}
-
 
 	return (
 		<TemplateDefault>
