@@ -120,7 +120,7 @@ const CustomerCard = ({
         title="Excluir cadastro."
         msg="Deseja realmente excluir este usuário?"
       />
-      <Stack spacing={2} sx={{ width: '100%' }}>
+      {/* <Stack spacing={2} sx={{ width: '100%' }}>
         <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
           <MuiAlert onClose={handleClose} icon={false} sx={{
             width: '100%',
@@ -130,7 +130,7 @@ const CustomerCard = ({
             Registro excluído com Sucesso!
           </MuiAlert>
         </Snackbar>
-      </Stack>
+      </Stack> */}
     </>
 
   )

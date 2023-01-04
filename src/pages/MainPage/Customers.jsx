@@ -1,10 +1,11 @@
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import {
-    Card,
     Grid,
-    Typography,
+    Snackbar,
 } from '@mui/material'
-import axios from 'axios'
+import MuiAlert from '@mui/material/Alert';
 import '../../styles/global.css'
 import { TemplateDefault } from '../../Templates/TemplateDefault'
 import CustomerCard from '../../Components/CustomerCard'
@@ -12,15 +13,16 @@ import CustomerCard from '../../Components/CustomerCard'
 
 const Customers = () => {
     const [customers, setCustomers] = useState([])
-    
+    const [open, setOpen] = useState(false)
+    let navigate = useNavigate()
+
 
     useEffect(() => {
-
         axios.get('http://127.0.0.1:8080/api/customers')
             .then((response) => {
                 const data = response.data
                 setCustomers(data)
-                
+
             })
             .catch((error) => {
                 if (error.response) {
@@ -36,21 +38,21 @@ const Customers = () => {
 
     }, [])
 
-    //  aqui era pra retornar na url a página de editar junto com o id passado
-    const handleEditCustomer = (id) =>{
-        // navigate(`/customers/edit/${id}`)
-        
+    const handleEditCustomer = (id) => {
+        navigate(`/customers/edit/${id}`)
+
     }
 
-    const handleRemoveCustomer = (id) =>{
+
+    const handleRemoveCustomer = (id) => {
         axios.delete(`http://127.0.0.1:8080/api/customers/${id}`)
-        .then(() => {
-          const newCustomersState = customers.filter(customer => customer._id !==id)
-          console.log(newCustomersState.id)
-          setCustomers(newCustomersState)
-        })
-    }
+            .then(() => {
+                const newCustomersState = customers.filter(customer => customer._id !== id)
+                setOpen(true)
 
+                setCustomers(newCustomersState)
+            })
+    }
 
     return (
 
@@ -61,15 +63,14 @@ const Customers = () => {
                 justifyContent="center"
                 alignItems='center'
 
-                >
+            >
 
                 {
-                    
                     customers.map(item => (
-                        // key={item._id}
-                        <Grid xs={2}>
+
+                        <Grid key={item._id}>
                             <CustomerCard
-                                
+
                                 id={item._id}
                                 name={item.name}
                                 email={item.email}
@@ -78,15 +79,23 @@ const Customers = () => {
                                 cpf={item.cpf}
 
 
-                            onRemoveCustomer ={handleRemoveCustomer}
-                            // onEditCustomer ={handleEditCustomer}
+                                onRemoveCustomer={() => handleRemoveCustomer(item._id)}
+                                onEditCustomer={handleEditCustomer}
                             />
                         </Grid>
                     ))
-                    
+
                 }
             </Grid>
-
+            <Snackbar open={open} autoHideDuration={6000} onClose={() => setOpen(false)}>
+                <MuiAlert onClose={() => setOpen(false)} icon={false} sx={{
+                    width: '100%',
+                    color: 'white',
+                    bgcolor: 'rgb(46 10 40)'
+                }}>
+                    Registro excluído com Sucesso!
+                </MuiAlert>
+            </Snackbar>
 
 
         </TemplateDefault>

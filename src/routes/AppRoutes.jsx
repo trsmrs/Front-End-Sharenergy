@@ -7,7 +7,11 @@ import {
 
 import LoginPage from "../pages/LoginPage/Login"
 import SingupPage from "../pages/LoginPage/Singup"
+
 import Customers from "../pages/MainPage/Customers"
+import CustomersEdit from "../pages/MainPage/CustomersEdit"
+
+
 import RandomUsers from "../pages/MainPage/RandomUsers"
 import Teste from "../pages/Teste"
 
@@ -25,6 +29,8 @@ const AppRoutes = () =>{
                  <Route path="/signup" element={<SingupPage />} />
 
                  <Route path="/customers" element={<Customers />} />
+                 <Route path="/customers/edit/:_id" element={<CustomersEdit />}/>   
+
                  {user &&<Route path="/random" element={<RandomUsers />} />}
                 <Route path="/random" element={<Navigate replace to='/'/>}/>
             </Routes>
