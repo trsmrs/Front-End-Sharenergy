@@ -6,7 +6,7 @@ import {
     TextField,
     Snackbar,
     Stack,
-    Box,
+    FormControl,
     Container,
 
 } from "@mui/material"
@@ -44,7 +44,7 @@ const CustomersEdit = () => {
     })
 
     async function getCustomer() {
-       await axios.get(`http://127.0.0.1:8080/api/customers/${id}`)
+        await axios.get(`http://127.0.0.1:8080/api/customers/${id}`)
             .then(response => {
                 const data = response.data
 
@@ -76,7 +76,7 @@ const CustomersEdit = () => {
 
     useEffect(() => {
         getCustomer()
-    },[])
+    }, [])
 
 
     const handleClick = () => {
@@ -106,8 +106,8 @@ const CustomersEdit = () => {
 
     }
 
-    const handleSubmit = async () => {
-
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         await axios.patch(`http://127.0.0.1:8080/api/customers/${id}`, {
 
             name: form.name.value,
@@ -118,9 +118,6 @@ const CustomersEdit = () => {
 
         }).then((response) => {
             handleClick()
-            alert('Foi')
-
-
         })
 
     }
@@ -155,119 +152,116 @@ const CustomersEdit = () => {
     return (
 
         <TemplateDefault>
-            <Container maxWidth='md' sx={{ border: '1px solid red' }}>
-                <Box
-                    component="form"
-                    onSubmit={handleSubmit}
-                    sx={{
-                        '& .MuiTextField-root': { m: 5, width: '45ch' },
-                        display: 'flex',
-                        position: 'relative',
-                        marginLeft: '25%',
-                        marginTop: '60px',
+            <Container className="efeito-vidro" component='form'
+                maxWidth='xs'
+                onSubmit={handleSubmit}
+                sx={{
+                    marginTop: 15,
+                    borderRadius: 10,
+                    height: 500
+
+
+                }}>
+
+                <FormControl sx={{ width: '100%', marginTop: 3 }}>
+
+                    <TextField
+                        error={form.name.error}
+                        label="Nome"
+                        name="name"
+                        value={form.name.value}
+                        onChange={handleInputChange}
+                        variant={"outlined"}
+                        color='secondary'
+                        required
+
+                    />
+                </FormControl>
+
+                <FormControl sx={{ width: '100%', marginTop: 3 }}>
+
+                    <TextField
+                        error={form.name.error}
+                        label="CPF"
+                        name="cpf"
+                        value={form.cpf.value}
+                        onChange={handleInputChange}
+                        variant={"outlined"}
+                        color='secondary'
+                        required
+                    />
+
+                </FormControl>
+
+                <FormControl sx={{ width: '100%', marginTop: 3 }}>
+
+                    <TextField
+                        error={form.name.error}
+                        label="E-mail"
+                        name="email"
+                        value={form.email.value}
+                        onChange={handleInputChange}
+                        variant={"outlined"}
+                        color='secondary'
+                        required
+                    />
+
+                </FormControl>
+
+                <FormControl sx={{ width: '100%', marginTop: 3 }}>
+                    <TextField
+                        error={form.name.error}
+                        label="Telefone"
+                        name="phone"
+                        value={form.phone.value}
+                        onChange={handleInputChange}
+                        variant={"outlined"}
+                        color='secondary'
+                        required
+                    />
+
+                </FormControl>
+
+                <FormControl sx={{ width: '100%', marginTop: 3 }}>
+                    <TextField
+                        error={form.name.error}
+                        label="Endereço"
+                        name="address"
+                        value={form.address.value}
+                        onChange={handleInputChange}
+                        variant={"outlined"}
+                        color='secondary'
+                        required
+                    />
+
+                </FormControl>
+                <FormControl sx={{ width: '100%', marginTop: 3 }}>
+                    <Button sx={{
+                        bgcolor: '#ad98a9', color: '#000',
+                        "&:hover": { bgcolor: '#7a4f6a', color: '#fff' }
                     }}
-
-                    autoComplete="off"
-
-                >
+                        type="submit"
+                    >Salvar</Button>
 
 
-                    <Box className='efeito-vidro' sx={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        flexDirection: 'column',
-                        borderRadius: 10,
-
-
-
-                    }}>
-                        {/* <Typography variant="h5" component="h5" sx={{ color: '#fff'}}>Cadastro de Clientes</Typography> */}
-
-                        <TextField sx={{ m: 21, width: '25ch' }}
-                            error={form.name.error}
-                            label="Nome"
-                            name="name"
-                            value={form.name.value}
-                            onChange={handleInputChange}
-                            variant={"outlined"}
-                            color='secondary'
-                            required
-                        />
-
-                        <TextField sx={{ m: 21, width: '25ch' }}
-                            error={form.name.error}
-                            label="CPF"
-                            name="cpf"
-                            value={form.cpf.value}
-                            onChange={handleInputChange}
-                            variant={"outlined"}
-                            color='secondary'
-                            required
-                        />
-
-                        <TextField sx={{ m: 21, width: '25ch' }}
-                            error={form.name.error}
-                            label="E-mail"
-                            name="email"
-                            value={form.email.value}
-                            onChange={handleInputChange}
-                            variant={"outlined"}
-                            color='secondary'
-                            required
-                        />
-
-
-                        <TextField sx={{ m: 21, width: '25ch' }}
-                            error={form.name.error}
-                            label="Telefone"
-                            name="phone"
-                            value={form.phone.value}
-                            onChange={handleInputChange}
-                            variant={"outlined"}
-                            color='secondary'
-                            required
-                        />
-
-                        <TextField sx={{ m: 21, width: '25ch' }}
-                            error={form.name.error}
-                            label="Endereço"
-                            name="address"
-                            value={form.address.value}
-                            onChange={handleInputChange}
-                            variant={"outlined"}
-                            color='secondary'
-                            required
-                        />
-
-                        <Button sx={{
-                            bgcolor: '#ad98a9', color: '#000', width: 350, marginLeft: 6,
-                            marginBottom: 4,
-                            "&:hover": { bgcolor: '#7a4f6a', color: '#fff' }
-                        }}
-                            type="submit"
-                        >Alterar</Button>
-
-
-                    </Box>
-
-
-                </Box>
-
-                <Stack spacing={2} sx={{ width: '100%' }}>
-                    <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-                        <MuiAlert onClose={handleClose} severity="success" sx={{
-                            width: '100%',
-                            color: 'white',
-                            bgcolor: 'rgb(46 10 40)'
-                        }}>
-                            Cadastro Alterado com Sucesso!
-                        </MuiAlert>
-                    </Snackbar>
-                </Stack>
-
-
+                </FormControl>
             </Container>
-        </TemplateDefault>
+
+            <Stack spacing={2} sx={{ width: '100%' }}>
+                <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+                    <MuiAlert onClose={handleClose} severity="success" sx={{
+                        width: '100%',
+                        color: 'white',
+                        bgcolor: 'rgb(46 10 40)'
+                    }}>
+                        Cadastro Alterado com Sucesso!
+                    </MuiAlert>
+                </Snackbar>
+            </Stack>
+
+
+        
+        </TemplateDefault >
 
     )
 }

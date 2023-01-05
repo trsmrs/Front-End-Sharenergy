@@ -55,18 +55,6 @@ export function HeaderGlobal() {
             Random Dogs
           </Typography>
 
-          <Typography variant="button" component="a" href='/customers/add' sx={{
-            mr: 2,
-            display: { xs: 'none', md: 'flex' },
-            fontFamily: 'monospace',
-            textAlign: 'center',
-            marginLeft: 5,
-            color: 'inherit',
-            textDecoration: 'none',
-          }}>
-            Adicionar Clientes
-          </Typography>
-
           <Typography variant="button" component="a" href='/customers' sx={{
             mr: 2,
             display: { xs: 'none', md: 'flex' },

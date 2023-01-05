@@ -35,10 +35,10 @@ const RandomDogs = () => {
 
     return (
         <TemplateDefault>
-            <Container maxWidth='sm' sx={{marginTop:5}}>
-                <Card Card sx={{ maxWidth: '100%'}}>
+            <Container maxWidth='sm' sx={{ marginTop: 15 }}>
+                <Card Card sx={{ maxWidth: '100%' }}>
                     <CardActionArea>
-                        <CardMedia 
+                        <CardMedia
                             component="img"
                             height='500px'
                             src={`${dogs}`}
@@ -46,7 +46,11 @@ const RandomDogs = () => {
                         />
                     </CardActionArea>
                     <CardActions>
-                        <Chip sx={{ bgcolor: "#462c40", color: '#fff', "&:hover": { bgcolor: '#5d4157' }, width: 100, height: 40 }}
+                        <Chip sx={{
+                            bgcolor: "#462c40",
+                            color: '#fff',
+                            "&:hover": { bgcolor: '#5d4157' }, width: 100, height: 40
+                        }}
                             icon={<PetsTwoToneIcon fontSize='large' color='#fff' />}
                             label="Woof"
                             onClick={handlePage} />

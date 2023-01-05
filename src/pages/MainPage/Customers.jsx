@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import {
     Grid,
+    Card,
     Snackbar,
+    Button,
+    Container
 } from '@mui/material'
 import MuiAlert from '@mui/material/Alert';
 import '../../styles/global.css'
@@ -55,38 +58,62 @@ const Customers = () => {
     }
 
     return (
-
         <TemplateDefault>
 
-            <Grid container item xs={12} spacing={4}
-                columns={{ xs: 2, sm: 4, md: 6 }}
-                justifyContent="center"
-                alignItems='center'
 
+            <Button variant="contained" href="/customers/add"
+                sx={{ marginTop: 10, marginLeft: 3, bgcolor: '#462c40',
+                "&:hover":{bgcolor: '#462c40'}
+            }}
             >
+                Adicionar Cliente
+            </Button>
 
-                {
-                    customers.map(item => (
+            <Container maxWidth='lg' >
 
-                        <Grid key={item._id}>
-                            <CustomerCard
-
-                                id={item._id}
-                                name={item.name}
-                                email={item.email}
-                                phone={item.phone}
-                                address={item.address}
-                                cpf={item.cpf}
+                <Grid container className='efeito-vidro'
+                    columns={{ xs: 2, sm: 4, md: 6 }}
+                    display='flex'
+                    borderRadius={4}
+                    justifyContent="center"
+                    alignItems='center'
+                    sx={{ marginTop: 5 }}>
 
 
-                                onRemoveCustomer={() => handleRemoveCustomer(item._id)}
-                                onEditCustomer={handleEditCustomer}
-                            />
-                        </Grid>
-                    ))
+                    {
+                        customers.map(item => (
 
-                }
-            </Grid>
+                            <Card key={item._id}
+                                sx={{
+
+                                    textAlign: 'center',
+                                    margin: '12px 10px 20px 0',
+                                    width: '342px',
+                                    height: '100%'
+                                }}
+                            >
+                                <CustomerCard
+
+                                    id={item._id}
+                                    name={item.name}
+                                    cpf={item.cpf}
+                                    email={item.email}
+                                    phone={item.phone}
+                                    address={item.address}
+
+                                    onRemoveCustomer={() => handleRemoveCustomer(item._id)}
+                                    onEditCustomer={handleEditCustomer}
+
+                                />
+
+                            </Card>
+
+                        ))
+
+                    }
+                </Grid>
+            </Container>
+
             <Snackbar open={open} autoHideDuration={6000} onClose={() => setOpen(false)}>
                 <MuiAlert onClose={() => setOpen(false)} icon={false} sx={{
                     width: '100%',

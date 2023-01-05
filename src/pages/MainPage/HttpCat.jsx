@@ -38,7 +38,7 @@ const HttpCats = () => {
 
             <Container className='efeito-vidro-card'
                 maxWidth='sm'
-                sx={{ marginTop: 5, bgcolor: 'white', borderRadius: 3, padding: 2 }}>
+                sx={{ marginTop: 15, bgcolor: 'white', borderRadius: 3, padding: 2 }}>
                 <FormControl sx={{ m: 1, maxWidth: '100%', width: '100%' }}>
                     <InputLabel color='secondary'>Status Cat Code</InputLabel>
                     <Select sx={{bgcolor:'white'}}

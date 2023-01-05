@@ -60,7 +60,7 @@ const RandomUsers = () => {
                     borderRadius: 10,
                 }}>
 
-                <FormControl sx={{ width: '30%', marginTop: 4 }}>
+                <FormControl sx={{ width: '30%', marginTop: 4, bgcolor: 'white' }}>
                     <TextField
                         type="name"
                         placeholder="Pesquisar por alguém"
