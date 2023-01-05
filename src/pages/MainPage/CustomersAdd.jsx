@@ -5,9 +5,7 @@ import {
     TextField,
     Snackbar,
     Stack,
-    Box,
     Container,
-    FormControlLabel,
     FormControl
 } from "@mui/material"
 import MuiAlert from '@mui/material/Alert'
@@ -70,8 +68,8 @@ const CustomersAdd = () => {
 
     }
 
-    const handleSubmit = async () => {
-
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         await axios.post(`http://127.0.0.1:8080/api/customers`, {
 
             name: form.name.value,
@@ -82,9 +80,7 @@ const CustomersAdd = () => {
 
         }).then((response) => {
             handleClick()
-            alert('Foi')
-
-
+        
         }).catch((error) => {
             alert(error)
         })
@@ -128,12 +124,12 @@ const CustomersAdd = () => {
                 sx={{
                     marginTop: 15,
                     borderRadius: 10,
-                    height: 500,
-                    width: '100%',
-                    border: '1px solid red'
+                    height: 500
+                    
+
                 }}>
 
-                <FormControl sx={{ width: '70%', marginLeft: 7, marginTop: 3 }}>
+                <FormControl sx={{ width: '100%', marginTop: 3 }}>
 
                     <TextField
                         error={form.name.error}
@@ -144,10 +140,11 @@ const CustomersAdd = () => {
                         variant={"outlined"}
                         color='secondary'
                         required
+
                     />
                 </FormControl>
 
-                <FormControl sx={{ width: '70%', marginLeft: 7, marginTop: 3  }}>
+                <FormControl sx={{ width: '100%', marginTop: 3 }}>
 
                     <TextField
                         error={form.name.error}
@@ -162,7 +159,7 @@ const CustomersAdd = () => {
 
                 </FormControl>
 
-                <FormControl sx={{ width: '70%', marginLeft: 7, marginTop: 3 }}>
+                <FormControl sx={{ width: '100%', marginTop: 3 }}>
 
                     <TextField
                         error={form.name.error}
@@ -177,7 +174,7 @@ const CustomersAdd = () => {
 
                 </FormControl>
 
-                <FormControl sx={{ width: '70%', marginLeft: 7, marginTop: 3  }}>
+                <FormControl sx={{ width: '100%', marginTop: 3 }}>
                     <TextField
                         error={form.name.error}
                         label="Telefone"
@@ -191,7 +188,7 @@ const CustomersAdd = () => {
 
                 </FormControl>
 
-                <FormControl sx={{ width: '70%', marginLeft: 7, marginTop: 3 }}>
+                <FormControl sx={{ width: '100%', marginTop: 3 }}>
                     <TextField
                         error={form.name.error}
                         label="Endereço"
@@ -204,7 +201,7 @@ const CustomersAdd = () => {
                     />
 
                 </FormControl>
-                <FormControl sx={{ width: '70%', marginLeft: 7, marginTop: 3 }}>
+                <FormControl sx={{ width: '100%', marginTop: 3 }}>
                     <Button sx={{
                         bgcolor: '#ad98a9', color: '#000',
                         "&:hover": { bgcolor: '#7a4f6a', color: '#fff' }
@@ -212,24 +209,23 @@ const CustomersAdd = () => {
                         type="submit"
                     >Cadastrar</Button>
 
+
                 </FormControl>
-
-
-
-                <Stack spacing={2} sx={{ width: '100%' }}>
-                    <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-                        <MuiAlert onClose={handleClose} severity="success" sx={{
-                            width: '100%',
-                            color: 'white',
-                            bgcolor: 'rgb(46 10 40)'
-                        }}>
-                            Cadastro Criado com Sucesso!
-                        </MuiAlert>
-                    </Snackbar>
-                </Stack>
-
-
             </Container>
+
+            <Stack spacing={2} sx={{ width: '100%' }}>
+                <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+                    <MuiAlert onClose={handleClose} severity="success" sx={{
+                        width: '100%',
+                        color: 'white',
+                        bgcolor: 'rgb(46 10 40)'
+                    }}>
+                        Cadastro Criado com Sucesso!
+                    </MuiAlert>
+                </Snackbar>
+            </Stack>
+
+
         </TemplateDefault >
 
     )

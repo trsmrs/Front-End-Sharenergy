@@ -90,11 +90,13 @@ export function HeaderGlobal() {
 export function HeaderLogin() {
   return (
     <Box >
-      <AppBar sx={{ bgcolor: '#4a2f40be', borderBottom: '1px solid #553f4d', alignItems:'center' }}>
+      <AppBar sx={{ bgcolor: '#4a2f40be', borderBottom: '1px solid #553f4d', alignItems:'center' }}>   
         <Toolbar>
-          <Typography variant="h6" component="h1" sx={{
-            fontFamily: 'monospace',
+        <Typography variant="button" component="a" href='/random' sx={{
+            mr: 3,
             textAlign: 'center',
+            fontFamily: 'monospace',
+            
             color: 'inherit',
             textDecoration: 'none',
           }}>

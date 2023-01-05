@@ -53,33 +53,44 @@ const RandomUsers = () => {
 
         <TemplateDefault>
 
-            <Container sx={{ border: '1px solid red', marginTop: 10 }} maxWidth='xl'>
-                <FormControl fullWidth>
-                    <TextField sx={{ marginLeft: 50, width: '20%', position: 'relative' }}
-                        label='Pesquisa'
-                        type='text'
-                        onChange={changeRandler}>
-                    </TextField>
+            <Container className="efeito-vidro" component='form'
+                maxWidth='xl'
+                sx={{
+                    marginTop: 15,
+                    borderRadius: 10,
+                }}>
+
+                <FormControl sx={{ width: '30%', marginTop: 4 }}>
+                    <TextField
+                        type="name"
+                        placeholder="Pesquisar por alguém"
+                        name="name"
+                        color="secondary"
+                        onChange={changeRandler}
+                    />
+
                 </FormControl>
-                <Grid container spacing={2}
+
+                <Grid container
                     justifyContent="center"
                     alignItems='center'
-                    marginTop={7} >
+                    marginTop={7} 
+                    
+                    >
                     {
                         filterUsers().map((user) => (
 
                             <Card key={user.cell} sx={{
                                 color: '#dbcccc',
                                 bgcolor: 'rgb(110 70 103)',
-                                border: '1px solid white',
-                                padding: 3,
+                                border: '1px solid white', 
                                 textAlign: 'center',
                                 margin: '0 10px 10px 0',
-                                width: '300px',
-                                height: '355px'
+                                width: '250px',
+                                height: '320px'
 
                             }}>
-                                <img alt='' width='250px' className='rounded-circle' src={user.picture.large}></img>
+                                <img alt='randoms' width='200px' height={'50%'} className='rounded-circle' src={user.picture.large}></img>
                                 <CardContent>
                                     <Typography textAlign='center' variant="body2" color="text.secondary">
                                         Nome: {user.name.first} {user.name.last}<br></br>

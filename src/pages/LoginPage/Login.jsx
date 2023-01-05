@@ -5,12 +5,11 @@ import {
     Container,
     FormControl,
     FormLabel,
-    TextField,
-    Typography,
+    TextField
 } from "@mui/material"
 // Custom imports
 import '../../styles/global.css'
- import {TemplateLogin} from "../../Templates/TemplateDefault"
+import { TemplateLogin } from "../../Templates/TemplateDefault"
 
 
 
@@ -20,13 +19,13 @@ const LoginPage = () => {
 
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value });
-        setError('') 
+        setError('')
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = "http://127.0.1:8080/api/admin";
+            const url = "http://127.0.1:8080/api/auth";
             const { data: res } = await axios.post(url, data);
             localStorage.setItem("token", res.data);
             handleClear()
@@ -42,55 +41,67 @@ const LoginPage = () => {
         }
     };
 
-  const handleClear = () =>{
-   
-    setData({password : ''})
-  }
-    
+    const handleClear = () => {
+
+        setData({ password: '' })
+    }
+
     return (
-         <TemplateLogin>
-            <Container maxWidth='xs' className="efeito-vidro" sx={{ display: 'grid', borderRadius: 6, padding: '56px 8px 0px', textAlign: 'center', marginTop: 10, height: 450 }}>
-                <form onSubmit={handleSubmit}>
-                    <Typography variant="h5" component="h5" sx={{ color: '#fff', fontWeight: 600, marginTop: 1, position: 'relative', top: '-33px' }}>Logar</Typography>
-                    <FormControl fullWidth>
-                        <FormLabel sx={{ color: '#fff', textAlign: 'left', fontWeight: 600, marginBottom: 1 }}>Usuário</FormLabel>
-                        <TextField sx={{ bgcolor: '#fff', marginBottom: 3 }}
+        <TemplateLogin>
+
+
+           
+                <Container className="efeito-vidro" component='form'
+                    maxWidth='xs'
+                    onSubmit={handleSubmit}
+                    sx={{
+                        marginTop: 15,
+                        borderRadius: 10,
+                        
+                        
+
+                    }}>
+                    <FormControl sx={{ width: '100%', marginTop: 10 }}>
+                        <FormLabel sx={{ fontWeight: 800 }}>Usuário</FormLabel>
+                        <TextField
                             type="name"
-                            placeholder="User Name"
+                            placeholder="Uauário"
                             name="name"
+                            color="secondary"
                             onChange={handleChange}
                             value={data.name}
                             required
                         />
+
                     </FormControl>
 
-                    <FormControl fullWidth>
-                        <FormLabel sx={{ color: '#fff', textAlign: 'left', fontWeight: 600, marginBottom: 1 }}>Senha</FormLabel>
-                        <TextField sx={{ bgcolor: '#fff' }}
+                    <FormControl sx={{ width: '100%', marginTop: 5 }}>
+                        <FormLabel sx={{ fontWeight: 800 }}>Senha</FormLabel>
+                        <TextField
                             type="password"
-                            placeholder="Password"
+                            placeholder="Senha"
                             name="password"
+                            color="secondary"
                             onChange={handleChange}
                             value={data.password}
                             required
                         />
-                    </FormControl>
 
-                    <FormControl>
+                    </FormControl>
+                    <FormControl sx={{ width: '100%', marginTop: 10 }}>
                         <Button sx={{
-                            bgcolor: '#d8d5da', color: '#000', width: 200, margin: '30px',
-                            "&:hover": { bgcolor: '#491d61', color: '#fff' }
+                            bgcolor: '#ad98a9', color: '#000',
+                            "&:hover": { bgcolor: '#7a4f6a', color: '#fff' }
                         }}
                             type="submit"
-                            fullWidth
-                        >Login</Button>
-                        <Typography variant="span" component="span" sx={{ color: '#fff', marginTop: 1}}>
-                           {error}
-                        </Typography>
+                        >Logar</Button>
                     </FormControl>
-                    
-                </form>
-            </Container>
+
+                    <FormControl sx={{ width: '100%', marginLeft: 13, marginTop: 2 }}>
+                        <FormLabel sx={{ color: "white" }}>{error}</FormLabel>
+                    </FormControl>
+                </Container>
+           
         </TemplateLogin>
     )
 }
