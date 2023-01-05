@@ -4,6 +4,8 @@ import {
     Typography,
     TextField,
     CardContent,
+    Container,
+    FormControl,
 } from '@mui/material'
 import axios from 'axios'
 import React, { useState } from 'react'
@@ -23,7 +25,6 @@ const RandomUsers = () => {
         axios.get('https://randomuser.me/api/?results=12')
             .then(response => {
                 const data = response.data.results
-                console.log(data)
                 setUsers(data)
             })
     }, [])
@@ -52,50 +53,46 @@ const RandomUsers = () => {
 
         <TemplateDefault>
 
+            <Container sx={{ border: '1px solid red', marginTop: 10 }} maxWidth='xl'>
+                <FormControl fullWidth>
+                    <TextField sx={{ marginLeft: 50, width: '20%', position: 'relative' }}
+                        label='Pesquisa'
+                        type='text'
+                        onChange={changeRandler}>
+                    </TextField>
+                </FormControl>
+                <Grid container spacing={2}
+                    justifyContent="center"
+                    alignItems='center'
+                    marginTop={7} >
+                    {
+                        filterUsers().map((user) => (
 
-            <TextField sx={{ position: 'absolute', top: 80, left: '43vw' }}
-                label='Pesquisa'
-                type='text'
-                onChange={changeRandler}>
-            </TextField>
+                            <Card key={user.cell} sx={{
+                                color: '#dbcccc',
+                                bgcolor: 'rgb(110 70 103)',
+                                border: '1px solid white',
+                                padding: 3,
+                                textAlign: 'center',
+                                margin: '0 10px 10px 0',
+                                width: '300px',
+                                height: '355px'
 
-            <Grid container spacing={2}
-                justifyContent="center"
-                alignItems='center'
-                marginTop={25}
-
-                >
-
-                {
-                    filterUsers().map((user) => (
-
-                        <Card key={user.cell} sx={{
-                            color: '#dbcccc',
-                            bgcolor: 'rgb(110 70 103)',
-                            border: '1px solid white',
-                            padding: 3,
-                            textAlign: 'center',
-                            margin: '0 10px 10px 0',
-                            width: '300px',
-                            height: '424px'
-                            
-                        }}
-
-                            
-                        >
-                            <img alt='' width='250px' className='rounded-circle' src={user.picture.large}></img>
-                            <CardContent>
-                                <Typography textAlign='center' variant="body2" color="text.secondary">
-                                    Nome: {user.name.first} {user.name.last}<br></br>
-                                    Usuário: {user.login.username}<br></br>
-                                    Email: {user.email}<br></br>
-                                    Idade: {user.dob.age}
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    ))
-                }
-            </Grid>
+                            }}>
+                                <img alt='' width='250px' className='rounded-circle' src={user.picture.large}></img>
+                                <CardContent>
+                                    <Typography textAlign='center' variant="body2" color="text.secondary">
+                                        Nome: {user.name.first} {user.name.last}<br></br>
+                                        Usuário: {user.login.username}<br></br>
+                                        Email: {user.email}<br></br>
+                                        Idade: {user.dob.age}
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        ))
+                    }
+                </Grid>
+            </Container>
 
             <Stack spacing={1} alignItems={'center'} marginBottom='30px'>
                 <Typography>Page: {page}</Typography>

@@ -31,7 +31,7 @@ const AppRoutes = () =>{
                  <Route path="/customers/add" element={<CustomersAdd />}/>   
                  <Route path="/customers/edit/:id" element={<CustomersEdit />}/>   
 
-                 {user &&<Route path="/random" element={<RandomUsers />} />}
+                 <Route path="/random" element={<RandomUsers />} />
                 <Route path="/random" element={<Navigate replace to='/'/>}/>
                 <Route path="/random/dogs" element={<RandomDogs />}/>
                 <Route path="/httpcat" element={<HttpCats />}/>

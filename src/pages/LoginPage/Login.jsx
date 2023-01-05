@@ -29,6 +29,7 @@ const LoginPage = () => {
             const url = "http://127.0.1:8080/api/admin";
             const { data: res } = await axios.post(url, data);
             localStorage.setItem("token", res.data);
+            handleClear()
             window.location = "/random";
         } catch (error) {
             if (
@@ -41,14 +42,14 @@ const LoginPage = () => {
         }
     };
 
-  const handleClear = (event) =>{
+  const handleClear = () =>{
    
-    setData({password : event.target.value})
+    setData({password : ''})
   }
     
     return (
          <TemplateLogin>
-            <Container className="efeito-vidro" sx={{ display: 'grid', borderRadius: 6, padding: '56px 8px 0px', textAlign: 'center', marginTop: 20, width: 400, height: 450 }}>
+            <Container maxWidth='xs' className="efeito-vidro" sx={{ display: 'grid', borderRadius: 6, padding: '56px 8px 0px', textAlign: 'center', marginTop: 10, height: 450 }}>
                 <form onSubmit={handleSubmit}>
                     <Typography variant="h5" component="h5" sx={{ color: '#fff', fontWeight: 600, marginTop: 1, position: 'relative', top: '-33px' }}>Logar</Typography>
                     <FormControl fullWidth>
@@ -58,7 +59,6 @@ const LoginPage = () => {
                             placeholder="User Name"
                             name="name"
                             onChange={handleChange}
-                         
                             value={data.name}
                             required
                         />
