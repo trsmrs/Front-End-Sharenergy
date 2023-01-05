@@ -121,104 +121,100 @@ const CustomersAdd = () => {
     return (
 
         <TemplateDefault>
-            <Container maxWidth='xs' sx={{ marginTop: 15 }}>
 
-                <Box component="form"
-                    onSubmit={handleSubmit}
-                    className='efeito-vidro'
-                    sx={{
-                        borderRadius: 10,
-                        height: 650,
-                        width: '100%'
-                    }}>
+            <Container className="efeito-vidro" component='form'
+                maxWidth='xs'
+                onSubmit={handleSubmit}
+                sx={{
+                    marginTop: 15,
+                    borderRadius: 10,
+                    height: 500,
+                    width: '100%',
+                    border: '1px solid red'
+                }}>
 
-                    <FormControl>
+                <FormControl sx={{ width: '70%', marginLeft: 7, marginTop: 3 }}>
 
-                        <Box sx={{ width: '70%', marginLeft: 7 }}>
-                            <TextField sx={{ width: '100%', margin: '40px 0 20px 0 ' }}
-                                error={form.name.error}
-                                label="Nome"
-                                name="name"
-                                value={form.name.value}
-                                onChange={handleInputChange}
-                                variant={"outlined"}
-                                color='secondary'
-                                required
-                            />
-                        </Box>
-                    </FormControl>
+                    <TextField
+                        error={form.name.error}
+                        label="Nome"
+                        name="name"
+                        value={form.name.value}
+                        onChange={handleInputChange}
+                        variant={"outlined"}
+                        color='secondary'
+                        required
+                    />
+                </FormControl>
 
-                    <FormControl>
-                        <Box sx={{ width: '70%', marginLeft: 7 }}>
-                            <TextField sx={{ width: '100%', margin: '40px 0 20px 0px ' }}
-                                error={form.name.error}
-                                label="CPF"
-                                name="cpf"
-                                value={form.cpf.value}
-                                onChange={handleInputChange}
-                                variant={"outlined"}
-                                color='secondary'
-                                required
-                            />
-                        </Box>
-                    </FormControl>
+                <FormControl sx={{ width: '70%', marginLeft: 7, marginTop: 3  }}>
 
-                    <FormControl>
-                        <Box sx={{ width: '70%', marginLeft: 7 }}>
-                            <TextField sx={{ width: '100%', margin: '40px 0 20px 0px ' }}
-                                error={form.name.error}
-                                label="E-mail"
-                                name="email"
-                                value={form.email.value}
-                                onChange={handleInputChange}
-                                variant={"outlined"}
-                                color='secondary'
-                                required
-                            />
-                        </Box>
-                    </FormControl>
+                    <TextField
+                        error={form.name.error}
+                        label="CPF"
+                        name="cpf"
+                        value={form.cpf.value}
+                        onChange={handleInputChange}
+                        variant={"outlined"}
+                        color='secondary'
+                        required
+                    />
 
-                    <FormControl>
-                        <Box sx={{ width: '70%', marginLeft: 7 }}>
-                            <TextField sx={{ width: '100%', margin: '40px 0 20px 0px ' }}
-                                error={form.name.error}
-                                label="Telefone"
-                                name="phone"
-                                value={form.phone.value}
-                                onChange={handleInputChange}
-                                variant={"outlined"}
-                                color='secondary'
-                                required
-                            />
-                        </Box>
-                    </FormControl>
+                </FormControl>
 
-                    <FormControl >
-                        <Box sx={{ width: '70%', marginLeft: 7 }}>
-                            <TextField sx={{ width: '100%', margin: '40px 0 20px 0px ' }}
-                                error={form.name.error}
-                                label="Endereço"
-                                name="address"
-                                value={form.address.value}
-                                onChange={handleInputChange}
-                                variant={"outlined"}
-                                color='secondary'
-                                required
-                            />
-                        </Box>
-                    </FormControl>
-                    <FormControl>
-                        <Box sx={{ width: '50%', margin: '0px 0 20px 90px ', border: '1px solid red' }}>
-                            <Button sx={{
-                                bgcolor: '#ad98a9', color: '#000', width: '100%',
-                                "&:hover": { bgcolor: '#7a4f6a', color: '#fff' }
-                            }}
-                                type="submit"
-                            >Cadastrar</Button>
-                        </Box>
-                    </FormControl>
+                <FormControl sx={{ width: '70%', marginLeft: 7, marginTop: 3 }}>
 
-                </Box>
+                    <TextField
+                        error={form.name.error}
+                        label="E-mail"
+                        name="email"
+                        value={form.email.value}
+                        onChange={handleInputChange}
+                        variant={"outlined"}
+                        color='secondary'
+                        required
+                    />
+
+                </FormControl>
+
+                <FormControl sx={{ width: '70%', marginLeft: 7, marginTop: 3  }}>
+                    <TextField
+                        error={form.name.error}
+                        label="Telefone"
+                        name="phone"
+                        value={form.phone.value}
+                        onChange={handleInputChange}
+                        variant={"outlined"}
+                        color='secondary'
+                        required
+                    />
+
+                </FormControl>
+
+                <FormControl sx={{ width: '70%', marginLeft: 7, marginTop: 3 }}>
+                    <TextField
+                        error={form.name.error}
+                        label="Endereço"
+                        name="address"
+                        value={form.address.value}
+                        onChange={handleInputChange}
+                        variant={"outlined"}
+                        color='secondary'
+                        required
+                    />
+
+                </FormControl>
+                <FormControl sx={{ width: '70%', marginLeft: 7, marginTop: 3 }}>
+                    <Button sx={{
+                        bgcolor: '#ad98a9', color: '#000',
+                        "&:hover": { bgcolor: '#7a4f6a', color: '#fff' }
+                    }}
+                        type="submit"
+                    >Cadastrar</Button>
+
+                </FormControl>
+
+
 
                 <Stack spacing={2} sx={{ width: '100%' }}>
                     <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
