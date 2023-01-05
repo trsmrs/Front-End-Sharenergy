@@ -34,3 +34,8 @@ body{
 	color: white;
 	text-align: center;
 }
+
+
+.img-cat{
+    display: none;
+}

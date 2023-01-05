@@ -26,8 +26,8 @@ export function HeaderGlobal() {
   }
 
   return (
-    <Box sx={{ flexGrow: 1, marginTop: 5 }}>
-      <AppBar sx={{ bgcolor: '#4a2f40be', borderBottom: '1px solid #553f4d' }}>
+    <Box sx={{display:'flex' , marginTop: 10 }}>
+      <AppBar sx={{bgcolor: '#4a2f40be', borderBottom: '1px solid #553f4d' }}>
         <Container maxWidth='md' sx={{ marginLeft: 5 }}>
           <Toolbar>
 
@@ -42,7 +42,7 @@ export function HeaderGlobal() {
               Lista Random de Usuários
             </Typography>
 
-            <Typography variant="button" component="a" href='#' sx={{
+            <Typography variant="button" component="a" href='/httpcat' sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
@@ -53,7 +53,7 @@ export function HeaderGlobal() {
               HTTP Cat
             </Typography>
 
-            <Typography variant="button" component="a" href='#' sx={{
+            <Typography variant="button" component="a" href='/random/dogs' sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
@@ -61,7 +61,18 @@ export function HeaderGlobal() {
               color: 'inherit',
               textDecoration: 'none',
             }}>
-              Random Dog
+              Random Dogs
+            </Typography>
+
+            <Typography variant="button" component="a" href='/customers/add' sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              marginLeft: 5,
+              color: 'inherit',
+              textDecoration: 'none',
+            }}>
+              Adicionar Clientes
             </Typography>
 
             <Typography variant="button" component="a" href='/customers' sx={{
@@ -74,6 +85,7 @@ export function HeaderGlobal() {
             }}>
               Lista de Clientes
             </Typography>
+
             <Button color="inherit" onClick={handleChange}>Logout</Button>
           </Toolbar>
         </Container>

@@ -26,7 +26,7 @@ const LoginPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = "http://127.0.1:8080/api/auth";
+            const url = "http://127.0.1:8080/api/admin";
             const { data: res } = await axios.post(url, data);
             localStorage.setItem("token", res.data);
             window.location = "/random";

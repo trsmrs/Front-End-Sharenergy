@@ -15,9 +15,8 @@ import MuiAlert from '@mui/material/Alert'
 import '../../styles/global.css'
 import { TemplateDefault } from "../../Templates/TemplateDefault"
 
-const CustomersEdit = () => {
-    const { id } = useParams()
-    const [open, setOpen] = useState(false);
+const CustomersAdd = () => {
+      const [open, setOpen] = useState(false);
 
     const [form, setForm] = useState({
         name: {
@@ -42,41 +41,6 @@ const CustomersEdit = () => {
         }
 
     })
-
-    async function getCustomer() {
-       await axios.get(`http://127.0.0.1:8080/api/customers/${id}`)
-            .then(response => {
-                const data = response.data
-
-                setForm({
-                    name: {
-                        value: data.name,
-                        error: false,
-                    },
-                    email: {
-                        value: data.email,
-                        error: false,
-                    },
-                    phone: {
-                        value: data.phone,
-                        error: false,
-                    },
-                    address: {
-                        value: data.address,
-                        error: false,
-                    },
-                    cpf: {
-                        value: data.cpf,
-                        error: false,
-                    }
-                })
-            })
-
-    }
-
-    useEffect(() => {
-        getCustomer()
-    },[])
 
 
     const handleClick = () => {
@@ -108,7 +72,7 @@ const CustomersEdit = () => {
 
     const handleSubmit = async () => {
 
-        await axios.patch(`http://127.0.0.1:8080/api/customers/${id}`, {
+        await axios.post(`http://127.0.0.1:8080/api/customers`, {
 
             name: form.name.value,
             email: form.email.value,
@@ -121,6 +85,8 @@ const CustomersEdit = () => {
             alert('Foi')
 
 
+        }).catch((error)=>{
+            alert(error)
         })
 
     }
@@ -245,7 +211,7 @@ const CustomersEdit = () => {
                             "&:hover": { bgcolor: '#7a4f6a', color: '#fff' }
                         }}
                             type="submit"
-                        >Alterar</Button>
+                        >Cadastrar</Button>
 
 
                     </Box>
@@ -260,7 +226,7 @@ const CustomersEdit = () => {
                             color: 'white',
                             bgcolor: 'rgb(46 10 40)'
                         }}>
-                            Cadastro Alterado com Sucesso!
+                            Cadastro Criado com Sucesso!
                         </MuiAlert>
                     </Snackbar>
                 </Stack>
@@ -274,4 +240,4 @@ const CustomersEdit = () => {
 
 
 
-export default CustomersEdit
+export default CustomersAdd

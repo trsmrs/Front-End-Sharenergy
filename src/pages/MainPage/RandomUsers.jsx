@@ -23,6 +23,7 @@ const RandomUsers = () => {
         axios.get('https://randomuser.me/api/?results=12')
             .then(response => {
                 const data = response.data.results
+                console.log(data)
                 setUsers(data)
             })
     }, [])
