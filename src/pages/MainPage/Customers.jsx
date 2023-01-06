@@ -10,6 +10,8 @@ import {
 } from '@mui/material'
 import MuiAlert from '@mui/material/Alert';
 import '../../styles/global.css'
+import theme from '../../styles/styled'
+import { ThemeProvider } from '@mui/material/styles'
 import { TemplateDefault } from '../../Templates/TemplateDefault'
 import CustomerCard from '../../Components/CustomerCard'
 
@@ -59,72 +61,75 @@ const Customers = () => {
 
     return (
         <TemplateDefault>
+            <ThemeProvider theme={theme}>
+
+                <Button variant="contained" href="/customers/add"
+                    sx={{
+                        marginTop: 10, marginLeft: 3, bgcolor:'#2a3942',
+                        "&:hover": { bgcolor: '#212c33' }
+                    }}
+                >
+                    Adicionar Cliente
+                </Button>
 
 
-            <Button variant="contained" href="/customers/add"
-                sx={{ marginTop: 10, marginLeft: 3, bgcolor: '#462c40',
-                "&:hover":{bgcolor: '#462c40'}
-            }}
-            >
-                Adicionar Cliente
-            </Button>
+                <Container maxWidth='lg' >
 
-            <Container maxWidth='lg' >
-
-                <Grid container className='efeito-vidro'
-                    columns={{ xs: 2, sm: 4, md: 6 }}
-                    display='flex'
-                    borderRadius={4}
-                    justifyContent="center"
-                    alignItems='center'
-                    sx={{ marginTop: 5 }}>
+                    <Grid container className='efeito-vidro'
+                        columns={{ xs: 2, sm: 4, md: 6 }}
+                        display='flex'
+                        borderRadius={4}
+                        justifyContent="center"
+                        alignItems='center'
+                        sx={{ marginTop: 5 }}>
 
 
-                    {
-                        customers.map(item => (
+                        {
+                            customers.map(item => (
 
-                            <Card key={item._id}
-                                sx={{
+                                <Card key={item._id}
+                                    sx={{
 
-                                    textAlign: 'center',
-                                    margin: '12px 10px 20px 0',
-                                    width: '342px',
-                                    height: '100%'
-                                }}
-                            >
-                                <CustomerCard
+                                        textAlign: 'center',
+                                        margin: '12px 10px 20px 0',
+                                        width: '342px',
+                                        height: '100%',
+                                        bgcolor:'#313e47'
+                                    }}
+                                >
+                                    <CustomerCard
 
-                                    id={item._id}
-                                    name={item.name}
-                                    cpf={item.cpf}
-                                    email={item.email}
-                                    phone={item.phone}
-                                    address={item.address}
+                                        id={item._id}
+                                        name={item.name}
+                                        cpf={item.cpf}
+                                        email={item.email}
+                                        phone={item.phone}
+                                        address={item.address}
 
-                                    onRemoveCustomer={() => handleRemoveCustomer(item._id)}
-                                    onEditCustomer={handleEditCustomer}
+                                        onRemoveCustomer={() => handleRemoveCustomer(item._id)}
+                                        onEditCustomer={handleEditCustomer}
 
-                                />
+                                    />
 
-                            </Card>
+                                </Card>
 
-                        ))
+                            ))
 
-                    }
-                </Grid>
-            </Container>
+                        }
+                    </Grid>
+                </Container>
 
-            <Snackbar open={open} autoHideDuration={6000} onClose={() => setOpen(false)}>
-                <MuiAlert onClose={() => setOpen(false)} icon={false} sx={{
-                    width: '100%',
-                    color: 'white',
-                    bgcolor: 'rgb(46 10 40)'
-                }}>
-                    Registro excluído com Sucesso!
-                </MuiAlert>
-            </Snackbar>
+                <Snackbar open={open} autoHideDuration={6000} onClose={() => setOpen(false)}>
+                    <MuiAlert onClose={() => setOpen(false)} icon={false} sx={{
+                        width: '100%',
+                        color: 'white',
+                        bgcolor: '#313e47'
+                    }}>
+                        Registro excluído com Sucesso!
+                    </MuiAlert>
+                </Snackbar>
 
-
+            </ThemeProvider>
         </TemplateDefault>
 
     )

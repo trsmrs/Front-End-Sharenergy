@@ -13,6 +13,9 @@ import { useEffect } from 'react'
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 import '../../styles/global.css'
+import theme from '../../styles/styled'
+import { ThemeProvider } from '@mui/material/styles'
+
 import { TemplateDefault } from '../../Templates/TemplateDefault'
 
 const RandomUsers = () => {
@@ -52,66 +55,66 @@ const RandomUsers = () => {
     return (
 
         <TemplateDefault>
+            <ThemeProvider theme={theme}>
+                <Container className="efeito-vidro" component='form'
+                    maxWidth='xl'
+                    sx={{
+                        marginTop: 15,
+                        borderRadius: 10,
+                    }}>
 
-            <Container className="efeito-vidro" component='form'
-                maxWidth='xl'
-                sx={{
-                    marginTop: 15,
-                    borderRadius: 10,
-                }}>
+                    <FormControl sx={{ width: '30%', marginTop: 4, bgcolor: 'white' }}>
+                        <TextField
+                            type="name"
+                            placeholder="Pesquisar por alguém"
+                            name="name"
+                            color="secondary"
+                            onChange={changeRandler}
+                        />
 
-                <FormControl sx={{ width: '30%', marginTop: 4, bgcolor: 'white' }}>
-                    <TextField
-                        type="name"
-                        placeholder="Pesquisar por alguém"
-                        name="name"
-                        color="secondary"
-                        onChange={changeRandler}
-                    />
+                    </FormControl>
 
-                </FormControl>
+                    <Grid container
+                        justifyContent="center"
+                        alignItems='center'
+                        marginTop={7}
 
-                <Grid container
-                    justifyContent="center"
-                    alignItems='center'
-                    marginTop={7} 
-                    
                     >
-                    {
-                        filterUsers().map((user) => (
+                        {
+                            filterUsers().map((user) => (
 
-                            <Card key={user.cell} sx={{
-                                color: '#dbcccc',
-                                bgcolor: 'rgb(110 70 103)',
-                                border: '1px solid white', 
-                                textAlign: 'center',
-                                margin: '0 10px 10px 0',
-                                width: '250px',
-                                height: '320px'
+                                <Card key={user.cell} sx={{
 
-                            }}>
-                                <img alt='randoms' width='200px' height={'50%'} className='rounded-circle' src={user.picture.large}></img>
-                                <CardContent>
-                                    <Typography textAlign='center' variant="body2" color="text.secondary">
-                                        Nome: {user.name.first} {user.name.last}<br></br>
-                                        Usuário: {user.login.username}<br></br>
-                                        Email: {user.email}<br></br>
-                                        Idade: {user.dob.age}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        ))
-                    }
-                </Grid>
-            </Container>
+                                    bgcolor: 'rgb(16, 28, 36)',
+                                    border: '1px solid white',
+                                    textAlign: 'center',
+                                    margin: '0 10px 10px 0',
+                                    width: '250px',
+                                    height: '320px'
 
-            <Stack spacing={1} alignItems={'center'} marginBottom='30px'>
-                <Typography>Page: {page}</Typography>
-                <Pagination count={10} size='large' variant="outlined" shape="rounded"
-                    onChange={handlePage}
-                />
-            </Stack>
+                                }}>
+                                    <img alt='randoms' width='200px' height={'50%'} className='rounded-circle' src={user.picture.large}></img>
+                                    <CardContent>
+                                        <Typography textAlign='center' variant="body2" color="white">
+                                            Nome: {user.name.first} {user.name.last}<br></br>
+                                            Usuário: {user.login.username}<br></br>
+                                            Email: {user.email}<br></br>
+                                            Idade: {user.dob.age}
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                            ))
+                        }
+                    </Grid>
+                </Container>
 
+                <Stack spacing={1} alignItems={'center'} marginBottom='30px'>
+                    <Typography>Page: {page}</Typography>
+                    <Pagination count={10} size='large' variant="outlined" shape="rounded"
+                        onChange={handlePage}
+                    />
+                </Stack>
+            </ThemeProvider>
         </TemplateDefault>
 
     )

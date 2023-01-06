@@ -3,26 +3,22 @@ html {
     /* border: 1px solid black; */
 }
 
-body{
+body {
     /* border:1px solid red; */
-    background:  rgb(93, 65, 87);
-    
+    background: rgb(16, 28, 36);
+
 }
 
 .efeito-vidro {
-    background: rgb(167 122 141 / 96%);
-    box-shadow: 4px 2px 20px 11px rgb(84 48 66);
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
+    background-color: rgb(42 57 66);
+    border-radius: 10px;
+    border: 1px solid rgb(255, 255, 255);
+
 }
 
 .efeito-vidro-card {
-    background: rgba(0, 0, 0, 0.15)!important;
-    box-shadow: 0 8px 32px 0 rgba(77, 59, 73, 0.781)!important;
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgb(255, 255, 255);
 }
 
 .rounded-circle {
@@ -30,12 +26,28 @@ body{
 }
 
 .error_msg {
-	font-size: 14px;
-	color: white;
-	text-align: center;
+    font-size: 14px;
+    color: white;
+    text-align: center;
 }
 
 
-.img-cat{
+.img-cat {
     display: none;
 }
+
+.withness {
+    color: #fff;
+    background-color: #fff;
+}
+
+#alert-dialog-title, #alert-dialog-description {
+    color:white;
+    background-color: rgb(16, 28, 36);
+}
+
+#btn-modal{
+    color: white;
+   background-color: rgb(30, 52, 66);   
+}
+

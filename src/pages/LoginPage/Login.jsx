@@ -9,6 +9,8 @@ import {
 } from "@mui/material"
 // Custom imports
 import '../../styles/global.css'
+import { ThemeProvider } from '@mui/material/styles'
+import theme from '../../styles/styled'
 import { TemplateLogin } from "../../Templates/TemplateDefault"
 
 
@@ -48,24 +50,23 @@ const LoginPage = () => {
 
     return (
         <TemplateLogin>
+            <ThemeProvider theme={theme}>
 
-
-           
                 <Container className="efeito-vidro" component='form'
                     maxWidth='xs'
                     onSubmit={handleSubmit}
                     sx={{
                         marginTop: 15,
                         borderRadius: 10,
-                        
-                        
+
+
 
                     }}>
                     <FormControl sx={{ width: '100%', marginTop: 10 }}>
-                        <FormLabel sx={{ fontWeight: 800 }}>Usuário</FormLabel>
-                        <TextField
+                        <FormLabel sx={{ fontWeight: 800, color: '#fff' }}>Usuário</FormLabel>
+                        <TextField inputProps={{className: 'withness'}}
                             type="name"
-                            placeholder="Uauário"
+                            placeholder="Usuário"
                             name="name"
                             color="secondary"
                             onChange={handleChange}
@@ -76,8 +77,8 @@ const LoginPage = () => {
                     </FormControl>
 
                     <FormControl sx={{ width: '100%', marginTop: 5 }}>
-                        <FormLabel sx={{ fontWeight: 800 }}>Senha</FormLabel>
-                        <TextField
+                        <FormLabel sx={{ fontWeight: 800, color: '#fff' }}>Senha</FormLabel>
+                        <TextField inputProps={{className: 'withness'}}
                             type="password"
                             placeholder="Senha"
                             name="password"
@@ -90,8 +91,8 @@ const LoginPage = () => {
                     </FormControl>
                     <FormControl sx={{ width: '100%', marginTop: 10 }}>
                         <Button sx={{
-                            bgcolor: '#ad98a9', color: '#000',
-                            "&:hover": { bgcolor: '#7a4f6a', color: '#fff' }
+                            bgcolor: 'rgb(19, 28, 36)', color: '#ffffff',
+                            "&:hover": { bgcolor: 'rgb(12, 18, 24)', color: '#fff' }
                         }}
                             type="submit"
                         >Logar</Button>
@@ -101,7 +102,7 @@ const LoginPage = () => {
                         <FormLabel sx={{ color: "white" }}>{error}</FormLabel>
                     </FormControl>
                 </Container>
-           
+            </ThemeProvider>
         </TemplateLogin>
     )
 }

@@ -12,6 +12,8 @@ import {
 } from "@mui/material"
 import MuiAlert from '@mui/material/Alert'
 
+import theme from '../../styles/styled'
+import { ThemeProvider } from '@mui/material/styles'
 import '../../styles/global.css'
 import { TemplateDefault } from "../../Templates/TemplateDefault"
 
@@ -152,115 +154,116 @@ const CustomersEdit = () => {
     return (
 
         <TemplateDefault>
-            <Container className="efeito-vidro" component='form'
-                maxWidth='xs'
-                onSubmit={handleSubmit}
-                sx={{
-                    marginTop: 15,
-                    borderRadius: 10,
-                    height: 500
+            <ThemeProvider theme={theme}>
+                <Container className="efeito-vidro" component='form'
+                    maxWidth='xs'
+                    onSubmit={handleSubmit}
+                    sx={{
+                        marginTop: 15,
+                        borderRadius: 10,
+                        height: 500
 
 
-                }}>
-
-                <FormControl sx={{ width: '100%', marginTop: 3 }}>
-
-                    <TextField
-                        error={form.name.error}
-                        label="Nome"
-                        name="name"
-                        value={form.name.value}
-                        onChange={handleInputChange}
-                        variant={"outlined"}
-                        color='secondary'
-                        required
-
-                    />
-                </FormControl>
-
-                <FormControl sx={{ width: '100%', marginTop: 3 }}>
-
-                    <TextField
-                        error={form.name.error}
-                        label="CPF"
-                        name="cpf"
-                        value={form.cpf.value}
-                        onChange={handleInputChange}
-                        variant={"outlined"}
-                        color='secondary'
-                        required
-                    />
-
-                </FormControl>
-
-                <FormControl sx={{ width: '100%', marginTop: 3 }}>
-
-                    <TextField
-                        error={form.name.error}
-                        label="E-mail"
-                        name="email"
-                        value={form.email.value}
-                        onChange={handleInputChange}
-                        variant={"outlined"}
-                        color='secondary'
-                        required
-                    />
-
-                </FormControl>
-
-                <FormControl sx={{ width: '100%', marginTop: 3 }}>
-                    <TextField
-                        error={form.name.error}
-                        label="Telefone"
-                        name="phone"
-                        value={form.phone.value}
-                        onChange={handleInputChange}
-                        variant={"outlined"}
-                        color='secondary'
-                        required
-                    />
-
-                </FormControl>
-
-                <FormControl sx={{ width: '100%', marginTop: 3 }}>
-                    <TextField
-                        error={form.name.error}
-                        label="Endereço"
-                        name="address"
-                        value={form.address.value}
-                        onChange={handleInputChange}
-                        variant={"outlined"}
-                        color='secondary'
-                        required
-                    />
-
-                </FormControl>
-                <FormControl sx={{ width: '100%', marginTop: 3 }}>
-                    <Button sx={{
-                        bgcolor: '#ad98a9', color: '#000',
-                        "&:hover": { bgcolor: '#7a4f6a', color: '#fff' }
-                    }}
-                        type="submit"
-                    >Salvar</Button>
-
-
-                </FormControl>
-            </Container>
-
-            <Stack spacing={2} sx={{ width: '100%' }}>
-                <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-                    <MuiAlert onClose={handleClose} severity="success" sx={{
-                        width: '100%',
-                        color: 'white',
-                        bgcolor: 'rgb(46 10 40)'
                     }}>
-                        Cadastro Alterado com Sucesso!
-                    </MuiAlert>
-                </Snackbar>
-            </Stack>
+
+                    <FormControl sx={{ width: '100%', marginTop: 3 }}>
+
+                         <TextField inputProps={{className: 'withness'}}
+                            error={form.name.error}
+                            label="Nome"
+                            name="name"
+                            value={form.name.value}
+                            onChange={handleInputChange}
+                            variant={"outlined"}
+                            color='secondary'
+                            required
+
+                        />
+                    </FormControl>
+
+                    <FormControl sx={{ width: '100%', marginTop: 3 }}>
+
+                         <TextField inputProps={{className: 'withness'}}
+                            error={form.name.error}
+                            label="CPF"
+                            name="cpf"
+                            value={form.cpf.value}
+                            onChange={handleInputChange}
+                            variant={"outlined"}
+                            color='secondary'
+                            required
+                        />
+
+                    </FormControl>
+
+                    <FormControl sx={{ width: '100%', marginTop: 3 }}>
+
+                         <TextField inputProps={{className: 'withness'}}
+                            error={form.name.error}
+                            label="E-mail"
+                            name="email"
+                            value={form.email.value}
+                            onChange={handleInputChange}
+                            variant={"outlined"}
+                            color='secondary'
+                            required
+                        />
+
+                    </FormControl>
+
+                    <FormControl sx={{ width: '100%', marginTop: 3 }}>
+                         <TextField inputProps={{className: 'withness'}}
+                            error={form.name.error}
+                            label="Telefone"
+                            name="phone"
+                            value={form.phone.value}
+                            onChange={handleInputChange}
+                            variant={"outlined"}
+                            color='secondary'
+                            required
+                        />
+
+                    </FormControl>
+
+                    <FormControl sx={{ width: '100%', marginTop: 3 }}>
+                         <TextField InputProps={{className:'withness'}}
+                            error={form.name.error}
+                            label="Endereço"
+                            name="address"
+                            value={form.address.value}
+                            onChange={handleInputChange}
+                            variant={"outlined"}
+                            color='secondary'
+                            required
+                        />
+
+                    </FormControl>
+                    <FormControl sx={{ width: '100%', marginTop: 3 }}>
+                        <Button sx={{
+                            bgcolor: 'rgb(19, 28, 36)', color: '#fff',
+                            "&:hover": { bgcolor: 'rgb(17, 25, 32)', color: '#fff' }
+                        }}
+                            type="submit"
+                        >Salvar</Button>
 
 
-        
+                    </FormControl>
+                </Container>
+
+                <Stack spacing={2} sx={{ width: '100%' }}>
+                    <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+                        <MuiAlert onClose={handleClose} severity="success" sx={{
+                            width: '100%',
+                            color: 'white',
+                            bgcolor: 'rgb(16, 28, 36)'
+                        }}>
+                            Cadastro Alterado com Sucesso!
+                        </MuiAlert>
+                    </Snackbar>
+                </Stack>
+
+
+            </ThemeProvider>
         </TemplateDefault >
 
     )

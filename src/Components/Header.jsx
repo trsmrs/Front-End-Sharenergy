@@ -17,11 +17,11 @@ export function HeaderGlobal() {
 
   return (
     <Box>
-      <AppBar sx={{ bgcolor: '#4a2f40be', borderBottom: '1px solid #553f4d', alignItems:'center' }}>
+      <AppBar sx={{ bgcolor: 'rgb(42 57 66)', borderBottom: '1px solid rgb(11 20 26)', alignItems:'center' }}>
         <Toolbar>
           <Typography variant="button" component="a" href='/random' sx={{
             mr: 3,
-            display: { xs: 'none', md: 'flex' },
+            
             textAlign: 'center',
             fontFamily: 'monospace',
             marginLeft: 15,
@@ -33,7 +33,7 @@ export function HeaderGlobal() {
 
           <Typography variant="button" component="a" href='/httpcat' sx={{
             mr: 2,
-            display: { xs: 'none', md: 'flex' },
+            
             textAlign: 'center',
             fontFamily: 'monospace',
             marginLeft: 3,
@@ -45,7 +45,7 @@ export function HeaderGlobal() {
 
           <Typography variant="button" component="a" href='/random/dogs' sx={{
             mr: 2,
-            display: { xs: 'none', md: 'flex' },
+            
             fontFamily: 'monospace',
             textAlign: 'center',
             marginLeft: 3,
@@ -57,7 +57,7 @@ export function HeaderGlobal() {
 
           <Typography variant="button" component="a" href='/customers' sx={{
             mr: 2,
-            display: { xs: 'none', md: 'flex' },
+            
             fontFamily: 'monospace',
             textAlign: 'center',
             marginLeft: 5,
@@ -78,7 +78,7 @@ export function HeaderGlobal() {
 export function HeaderLogin() {
   return (
     <Box >
-      <AppBar sx={{ bgcolor: '#4a2f40be', borderBottom: '1px solid #553f4d', alignItems:'center' }}>   
+      <AppBar sx={{ bgcolor: 'rgb(42 57 66)', borderBottom: '1px solid rgb(11 20 26)', alignItems:'center' }}>   
         <Toolbar>
         <Typography variant="button" component="a" href='/random' sx={{
             mr: 3,

@@ -23,8 +23,8 @@ const RandomDogs = () => {
     }, [])
 
 
-    const handlePage = () => {
-        axios.get(`https://random.dog/woof.json`)
+    const handlePage = async () => {
+       await axios.get(`https://random.dog/woof.json`)
             .then(response => {
                 const data = response.data.url
                 setDogs(data)
@@ -36,7 +36,7 @@ const RandomDogs = () => {
     return (
         <TemplateDefault>
             <Container maxWidth='sm' sx={{ marginTop: 15 }}>
-                <Card Card sx={{ maxWidth: '100%' }}>
+                <Card sx={{ maxWidth: '100%' }}>
                     <CardActionArea>
                         <CardMedia
                             component="img"
@@ -45,17 +45,17 @@ const RandomDogs = () => {
                             alt="Dogsssss"
                         />
                     </CardActionArea>
-                    <CardActions>
+                    <CardActions sx={{bgcolor: '#313e47'}}>
                         <Chip sx={{
-                            bgcolor: "#462c40",
+                            bgcolor: "#1a2329",
                             color: '#fff',
-                            "&:hover": { bgcolor: '#5d4157' }, width: 100, height: 40
+                            "&:hover": { bgcolor: '#161d22' }, width: 100, height: 40
                         }}
                             icon={<PetsTwoToneIcon fontSize='large' color='#fff' />}
                             label="Woof"
                             onClick={handlePage} />
                     </CardActions>
-                </Card >
+                </Card>
             </Container>
         </TemplateDefault>
     )

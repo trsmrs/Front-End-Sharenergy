@@ -18,23 +18,40 @@ import HttpCats from "../pages/MainPage/HttpCat"
 
 
 
-const AppRoutes = () =>{
+const AppRoutes = () => {
     const user = localStorage.getItem("token");
 
-    return(
+    return (
 
         <Router>
             <Routes>
-                 <Route path="/" element={<LoginPage />} />
-              
-                 <Route path="/customers" element={<Customers />} />
-                 <Route path="/customers/add" element={<CustomersAdd />}/>   
-                 <Route path="/customers/edit/:id" element={<CustomersEdit />}/>   
+                <Route path="/" element={<LoginPage />} />
 
-                 <Route path="/random" element={<RandomUsers />} />
-                <Route path="/random" element={<Navigate replace to='/'/>}/>
-                <Route path="/random/dogs" element={<RandomDogs />}/>
-                <Route path="/httpcat" element={<HttpCats />}/>
+                {user && <Route path="/random" element={<RandomUsers />} />}
+                <Route path="/random" element={<Navigate replace to='/' />} />
+
+
+                {user && <Route path="/customers" element={<Customers />} />}
+                <Route path="/customers" element={<Navigate replate to='/' />} />
+
+
+                {user && <Route path="/customers/add" element={<CustomersAdd />} />}
+                <Route path="/customers/add" element={<Navigate replate to='/' />} />
+
+
+                {user && <Route path="/customers/edit/:id" element={<CustomersEdit />} />}
+                <Route path="/customers/edit/:id" element={<Navigate replate to='/' />} />
+
+
+
+                {user && <Route path="/random/dogs" element={<RandomDogs />} />}
+                <Route path="/random/dogs" element={<Navigate replate to='/' />} />
+
+                {user && <Route path="/httpcat" element={<HttpCats />} />}
+                <Route path="/httpcat" element={<Navigate replate to='/' />} />
+
+
+
             </Routes>
         </Router>
 
