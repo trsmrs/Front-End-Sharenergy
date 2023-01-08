@@ -1,10 +1,10 @@
 html {
     box-sizing: border-box;
-    /* border: 1px solid black; */
+
 }
 
 body {
-    /* border:1px solid red; */
+
     background: rgb(16, 28, 36);
 
 }
@@ -36,18 +36,40 @@ body {
     display: none;
 }
 
-.withness {
-    color: #fff;
-    background-color: #fff;
+
+
+.cat-404 {
+    display: none;
 }
 
-#alert-dialog-title, #alert-dialog-description {
-    color:white;
+
+#inputLabel {
+    color: #fff!important;
+}
+
+.color-white {
+    color: #fff !important;
+
+}
+
+
+#alert-dialog-title,
+#alert-dialog-description {
+    color: white;
     background-color: rgb(16, 28, 36);
 }
 
-#btn-modal{
+#btn-modal {
     color: white;
-   background-color: rgb(30, 52, 66);   
+    background-color: rgb(30, 52, 66);
 }
 
+.stack button {
+    color: rgb(16, 28, 36) !important;
+    background-color: #fff !important;
+}
+
+.btns {
+
+    background-color: '#005c4b' !important;
+}

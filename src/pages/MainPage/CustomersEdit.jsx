@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import axios from "axios"
 import {
     Button,
@@ -8,6 +8,7 @@ import {
     Stack,
     FormControl,
     Container,
+    Chip,
 
 } from "@mui/material"
 import MuiAlert from '@mui/material/Alert'
@@ -15,9 +16,11 @@ import MuiAlert from '@mui/material/Alert'
 import theme from '../../styles/styled'
 import { ThemeProvider } from '@mui/material/styles'
 import '../../styles/global.css'
+import ReplyIcon from '@mui/icons-material/Reply'
 import { TemplateDefault } from "../../Templates/TemplateDefault"
 
 const CustomersEdit = () => {
+    const navigate = useNavigate()
     const { id } = useParams()
     const [open, setOpen] = useState(false);
 
@@ -85,6 +88,10 @@ const CustomersEdit = () => {
         setOpen(true);
         clearFields()
 
+    }
+
+    const handleBack = () =>{
+        navigate('/customers')
     }
 
     const handleClose = (event, reason) => {
@@ -155,11 +162,21 @@ const CustomersEdit = () => {
 
         <TemplateDefault>
             <ThemeProvider theme={theme}>
+                <Container>
+                        <Chip sx={{
+                            bgcolor: '#005c4b', color: '#fff', marginTop: '70px',
+                            "&:hover": { bgcolor: '#005c4b', color: '#fff' }
+                        }}
+                        icon={<ReplyIcon fontSize='large' color='#fff' />}
+                        label='Voltar'
+                        onClick={handleBack}/>
+                </Container>
+
                 <Container className="efeito-vidro" component='form'
                     maxWidth='xs'
                     onSubmit={handleSubmit}
                     sx={{
-                        marginTop: 15,
+                        marginTop: 10,
                         borderRadius: 10,
                         height: 500
 
@@ -167,81 +184,82 @@ const CustomersEdit = () => {
                     }}>
 
                     <FormControl sx={{ width: '100%', marginTop: 3 }}>
-
-                         <TextField inputProps={{className: 'withness'}}
+                        <TextField inputProps={{ className: 'color-white' }}
+                         InputLabelProps= {{ className: 'color-white' }}
                             error={form.name.error}
                             label="Nome"
                             name="name"
                             value={form.name.value}
                             onChange={handleInputChange}
                             variant={"outlined"}
-                            color='secondary'
                             required
 
                         />
                     </FormControl>
 
                     <FormControl sx={{ width: '100%', marginTop: 3 }}>
-
-                         <TextField inputProps={{className: 'withness'}}
+                        <TextField inputProps={{ className: 'color-white' }}
+                         InputLabelProps= {{ className: 'color-white' }}
                             error={form.name.error}
                             label="CPF"
                             name="cpf"
                             value={form.cpf.value}
                             onChange={handleInputChange}
                             variant={"outlined"}
-                            color='secondary'
+
                             required
                         />
 
                     </FormControl>
 
                     <FormControl sx={{ width: '100%', marginTop: 3 }}>
-
-                         <TextField inputProps={{className: 'withness'}}
+                        <TextField inputProps={{ className: 'color-white' }}
+                         InputLabelProps= {{ className: 'color-white' }}
                             error={form.name.error}
                             label="E-mail"
                             name="email"
                             value={form.email.value}
                             onChange={handleInputChange}
                             variant={"outlined"}
-                            color='secondary'
+
                             required
                         />
 
                     </FormControl>
 
                     <FormControl sx={{ width: '100%', marginTop: 3 }}>
-                         <TextField inputProps={{className: 'withness'}}
+                        <TextField inputProps={{ className: 'color-white' }}
+                         InputLabelProps= {{ className: 'color-white' }}
                             error={form.name.error}
                             label="Telefone"
                             name="phone"
                             value={form.phone.value}
                             onChange={handleInputChange}
                             variant={"outlined"}
-                            color='secondary'
+
                             required
                         />
 
                     </FormControl>
 
                     <FormControl sx={{ width: '100%', marginTop: 3 }}>
-                         <TextField InputProps={{className:'withness'}}
+                        <TextField InputProps={{ className: 'color-white' }}
+                            InputLabelProps= {{ className: 'color-white' }}
                             error={form.name.error}
                             label="Endereço"
                             name="address"
                             value={form.address.value}
                             onChange={handleInputChange}
                             variant={"outlined"}
-                            color='secondary'
+
                             required
                         />
 
                     </FormControl>
                     <FormControl sx={{ width: '100%', marginTop: 3 }}>
                         <Button sx={{
-                            bgcolor: 'rgb(19, 28, 36)', color: '#fff',
-                            "&:hover": { bgcolor: 'rgb(17, 25, 32)', color: '#fff' }
+                            bgcolor: '#005c4b', color: '#fff',
+                            "&:hover": { bgcolor: '#005c4b', color: '#fff' }
                         }}
                             type="submit"
                         >Salvar</Button>

@@ -7,7 +7,6 @@ import {
 
 import LoginPage from "../pages/LoginPage/Login"
 
-
 import Customers from "../pages/MainPage/Customers"
 import CustomersAdd from "../pages/MainPage/CustomersAdd"
 import CustomersEdit from "../pages/MainPage/CustomersEdit"
@@ -20,6 +19,10 @@ import HttpCats from "../pages/MainPage/HttpCat"
 
 const AppRoutes = () => {
     const user = localStorage.getItem("token");
+    const tempUser = sessionStorage.getItem('token')
+    let session
+
+    user ? session = user : session = tempUser
 
     return (
 
@@ -27,27 +30,27 @@ const AppRoutes = () => {
             <Routes>
                 <Route path="/" element={<LoginPage />} />
 
-                {user && <Route path="/random" element={<RandomUsers />} />}
+                { session &&  <Route path="/random" element={<RandomUsers />} />}
                 <Route path="/random" element={<Navigate replace to='/' />} />
 
 
-                {user && <Route path="/customers" element={<Customers />} />}
+                {session && <Route path="/customers" element={<Customers />} />}
                 <Route path="/customers" element={<Navigate replate to='/' />} />
 
 
-                {user && <Route path="/customers/add" element={<CustomersAdd />} />}
+                {session && <Route path="/customers/add" element={<CustomersAdd />} />}
                 <Route path="/customers/add" element={<Navigate replate to='/' />} />
 
 
-                {user && <Route path="/customers/edit/:id" element={<CustomersEdit />} />}
+                {session && <Route path="/customers/edit/:id" element={<CustomersEdit />} />}
                 <Route path="/customers/edit/:id" element={<Navigate replate to='/' />} />
 
 
 
-                {user && <Route path="/random/dogs" element={<RandomDogs />} />}
+                {session && <Route path="/random/dogs" element={<RandomDogs />} />}
                 <Route path="/random/dogs" element={<Navigate replate to='/' />} />
 
-                {user && <Route path="/httpcat" element={<HttpCats />} />}
+                {session && <Route path="/httpcat" element={<HttpCats />} />}
                 <Route path="/httpcat" element={<Navigate replate to='/' />} />
 
 

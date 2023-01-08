@@ -63,8 +63,8 @@ const RandomUsers = () => {
                         borderRadius: 10,
                     }}>
 
-                    <FormControl sx={{ width: '30%', marginTop: 4, bgcolor: 'white' }}>
-                        <TextField
+                    <FormControl sx={{ width: '30%', marginTop: 4 }}>
+                        <TextField inputProps={{className: 'color-white'}}
                             type="name"
                             placeholder="Pesquisar por alguém"
                             name="name"
@@ -109,8 +109,8 @@ const RandomUsers = () => {
                 </Container>
 
                 <Stack spacing={1} alignItems={'center'} marginBottom='30px'>
-                    <Typography>Page: {page}</Typography>
-                    <Pagination count={10} size='large' variant="outlined" shape="rounded"
+                    <Typography color='secondary'>Page: {page}</Typography>
+                    <Pagination className='stack' count={10} color='primary' size='large' variant="outlined" shape="rounded"
                         onChange={handlePage}
                     />
                 </Stack>

@@ -30,7 +30,6 @@ const RandomDogs = () => {
                 setDogs(data)
 
             })
-
     }
 
     return (
@@ -47,9 +46,9 @@ const RandomDogs = () => {
                     </CardActionArea>
                     <CardActions sx={{bgcolor: '#313e47'}}>
                         <Chip sx={{
-                            bgcolor: "#1a2329",
+                            bgcolor: "#005c4b",
                             color: '#fff',
-                            "&:hover": { bgcolor: '#161d22' }, width: 100, height: 40
+                            "&:hover": { bgcolor: '#005c4b' }, width: 100, height: 40
                         }}
                             icon={<PetsTwoToneIcon fontSize='large' color='#fff' />}
                             label="Woof"

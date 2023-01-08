@@ -63,15 +63,16 @@ const Customers = () => {
         <TemplateDefault>
             <ThemeProvider theme={theme}>
 
-                <Button variant="contained" href="/customers/add"
-                    sx={{
-                        marginTop: 10, marginLeft: 3, bgcolor:'#2a3942',
-                        "&:hover": { bgcolor: '#212c33' }
-                    }}
-                >
-                    Adicionar Cliente
-                </Button>
-
+                <Container>
+                    <Button variant="contained" href="/customers/add"
+                        sx={{
+                            marginTop: 10, marginLeft: 3, bgcolor: '#005c4b',
+                            "&:hover": { bgcolor: '#005c4b' }
+                        }}
+                    >
+                        Adicionar Cliente
+                    </Button>
+                </Container>
 
                 <Container maxWidth='lg' >
 
@@ -94,7 +95,7 @@ const Customers = () => {
                                         margin: '12px 10px 20px 0',
                                         width: '342px',
                                         height: '100%',
-                                        bgcolor:'#313e47'
+                                        bgcolor: '#313e47'
                                     }}
                                 >
                                     <CustomerCard
@@ -123,7 +124,7 @@ const Customers = () => {
                     <MuiAlert onClose={() => setOpen(false)} icon={false} sx={{
                         width: '100%',
                         color: 'white',
-                        bgcolor: '#313e47'
+                        bgcolor: '#005c4b'
                     }}>
                         Registro excluído com Sucesso!
                     </MuiAlert>

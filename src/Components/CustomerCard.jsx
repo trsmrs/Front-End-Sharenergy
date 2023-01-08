@@ -81,13 +81,13 @@ const CustomerCard = ({
 
         <Box sx={{ margin: '20px 0 10px 0', display: 'flex', justifyContent: 'space-evenly' }}>
           <Chip label='Editar' sx={{
-            bgcolor: "#1a2329",
+            bgcolor: "#005c4b",
             color: '#fff',
             width: '20%'
           }}
             onClick={() => handleEditCustomer(id)} />
           <Chip label='Excluir' sx={{
-            bgcolor: "#1a2329",
+            bgcolor: "#005c4b",
             color: '#fff',
             width: '20%'
           }}

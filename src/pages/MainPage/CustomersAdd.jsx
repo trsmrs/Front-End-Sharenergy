@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import {
     Button,
@@ -7,8 +8,10 @@ import {
     Stack,
     Container,
     FormControl,
+    Chip
 } from "@mui/material"
 import MuiAlert from '@mui/material/Alert'
+import ReplyIcon from '@mui/icons-material/Reply'
 
 import '../../styles/global.css'
 import { ThemeProvider } from '@mui/material/styles'
@@ -17,7 +20,7 @@ import { TemplateDefault } from "../../Templates/TemplateDefault"
 
 const CustomersAdd = () => {
     const [open, setOpen] = useState(false);
-
+    const navigate = useNavigate()
     const [form, setForm] = useState({
         name: {
             value: "",
@@ -49,6 +52,7 @@ const CustomersAdd = () => {
 
     }
 
+   
     const handleClose = (event, reason) => {
         if (reason === 'click') {
             return;
@@ -116,24 +120,39 @@ const CustomersAdd = () => {
 
     }
 
+    const handleBack = () => {
+        navigate('/customers')
+    }
+
     return (
 
         <TemplateDefault>
             <ThemeProvider theme={theme}>
+
+                <Container>
+                    <Chip sx={{
+                        bgcolor: '#005c4b', color: '#fff', marginTop: '70px',
+                        "&:hover": { bgcolor: '#005c4b', color: '#fff' }
+                    }}
+                        icon={<ReplyIcon fontSize='large' color='#fff' />}
+                        label='Voltar'
+                        onClick={handleBack} />
+                </Container>
+
                 <Container className="efeito-vidro" component='form'
                     maxWidth='xs'
                     onSubmit={handleSubmit}
                     sx={{
-                        marginTop: 15,
+                        marginTop: 10,
                         borderRadius: 10,
                         height: 500
 
 
                     }}>
 
-                    <FormControl sx={{ width: '100%', marginTop: 3}}>
-                   
-                        <TextField inputProps={{className: 'withness'}}
+                    <FormControl sx={{ width: '100%', marginTop: 3 }}>
+                        <TextField inputProps={{ className: 'color-white' }}
+                            InputLabelProps={{ className: 'color-white' }}
                             error={form.name.error}
                             label="Nome"
                             name="name"
@@ -147,8 +166,8 @@ const CustomersAdd = () => {
                     </FormControl>
 
                     <FormControl sx={{ width: '100%', marginTop: 3 }}>
-
-                        <TextField inputProps={{className: 'withness'}}
+                        <TextField inputProps={{ className: 'color-white' }}
+                            InputLabelProps={{ className: 'color-white' }}
                             error={form.name.error}
                             label="CPF"
                             name="cpf"
@@ -162,8 +181,8 @@ const CustomersAdd = () => {
                     </FormControl>
 
                     <FormControl sx={{ width: '100%', marginTop: 3 }}>
-
-                        <TextField inputProps={{className: 'withness'}}
+                        <TextField inputProps={{ className: 'color-white' }}
+                            InputLabelProps={{ className: 'color-white' }}
                             error={form.name.error}
                             label="E-mail"
                             name="email"
@@ -177,7 +196,8 @@ const CustomersAdd = () => {
                     </FormControl>
 
                     <FormControl sx={{ width: '100%', marginTop: 3 }}>
-                        <TextField inputProps={{className: 'withness'}}
+                        <TextField inputProps={{ className: 'color-white' }}
+                            InputLabelProps={{ className: 'color-white' }}
                             error={form.name.error}
                             label="Telefone"
                             name="phone"
@@ -186,12 +206,14 @@ const CustomersAdd = () => {
                             variant={"outlined"}
                             color='secondary'
                             required
+                            
                         />
 
                     </FormControl>
 
                     <FormControl sx={{ width: '100%', marginTop: 3 }}>
-                        <TextField inputProps={{className: 'withness'}}
+                        <TextField inputProps={{ className: 'color-white' }}
+                            InputLabelProps={{ className: 'color-white' }}
                             error={form.name.error}
                             label="Endereço"
                             name="address"
@@ -205,9 +227,9 @@ const CustomersAdd = () => {
                     </FormControl>
                     <FormControl sx={{ width: '100%', marginTop: 3 }}>
                         <Button sx={{
-                          bgcolor: 'rgb(19, 28, 36)', color: '#ffffff',
-                          "&:hover": { bgcolor: 'rgb(12, 18, 24)', color: '#fff' }
-                      }}
+                            bgcolor: '#005c4b', color: '#ffffff',
+                            "&:hover": { bgcolor: '#005c4b', color: '#fff' }
+                        }}
                             type="submit"
                         >Cadastrar</Button>
 
@@ -220,7 +242,7 @@ const CustomersAdd = () => {
                         <MuiAlert onClose={handleClose} severity="success" sx={{
                             width: '100%',
                             color: 'white',
-                            bgcolor: 'rgb(16, 28, 36)'
+                            bgcolor: '#005c4b'
                         }}>
                             Cadastro Criado com Sucesso!
                         </MuiAlert>

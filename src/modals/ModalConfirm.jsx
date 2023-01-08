@@ -11,6 +11,7 @@ import {
 
 import '../styles/global.css'
 
+
 const ModalConfirm = (
   { open,
     onClose,
