@@ -2900,10 +2900,10 @@ axe-core@^4.4.3:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.6.1.tgz#79cccdee3e3ab61a8f42c458d4123a6768e6fbce"
   integrity sha512-lCZN5XRuOnpG4bpMq8v0khrWtUOn+i8lZSb6wHZH56ZfbIEv6XwJV84AAueh9/zi7qPVJ/E4yz6fmsiyOmXR4w==
 
-axios@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.2.2.tgz#72681724c6e6a43a9fea860fc558127dbe32f9f1"
-  integrity sha512-bz/J4gS2S3I7mpN/YZfGFTqhXTYzRho8Ay38w2otuuDR322KzFIWm/4W2K6gIwvWaws5n+mnb7D1lN9uD+QH6Q==
+axios@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.0.tgz#f1e5292f26b2fd5c2e66876adc5b06cdbd7d2102"
+  integrity sha512-EZ1DYihju9pwVB+jg67ogm+Tmqc6JmhamRN6I4Zt8DfZu5lbcQGw3ozH9lFejSJgs/ibaef3A9PMXPLeefFGJg==
   dependencies:
     follow-redirects "^1.15.0"
     form-data "^4.0.0"
@@ -5240,11 +5240,6 @@ ignore@^5.2.0:
   version "5.2.4"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.4.tgz#a291c0c6178ff1b960befe47fcdec301674a6324"
   integrity sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==
-
-imask@^6.4.3:
-  version "6.4.3"
-  resolved "https://registry.yarnpkg.com/imask/-/imask-6.4.3.tgz#b81b247043807995e048f559e98930c2fec8004a"
-  integrity sha512-aH2GHemGkr3cbRBfhogHMIx05eUxdHrZNlKTTLmz8VxpSopuHHJ8+85FsDlBVQqxPlDLhZuwj4lpHHWbLOdBSw==
 
 immer@^9.0.7:
   version "9.0.17"
@@ -7617,7 +7612,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -7764,14 +7759,6 @@ react-hook-form@^7.41.3:
   version "7.41.3"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.41.3.tgz#1b85e95e70cb743d41cd9230ea2df71359d00151"
   integrity sha512-5QNTmqJtDb88WV5n41b6+AmcDMVyaJ3tccPgHAgS215w3jZ3bmJhDO27kNTr8u4YHNYXmS7p1/4/KachBAlUtw==
-
-react-imask@^6.4.3:
-  version "6.4.3"
-  resolved "https://registry.yarnpkg.com/react-imask/-/react-imask-6.4.3.tgz#845de954e03e98179a23b92722ed3661cbd11037"
-  integrity sha512-5WyCbubQErO8Wr/zLDyUyC1zCqQXP979QXW6BNirUGsM1VxFmVG0nNfXA1PSXlgdbaXWBiBj+VJBvg/8BDzieA==
-  dependencies:
-    imask "^6.4.3"
-    prop-types "^15.7.2"
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
